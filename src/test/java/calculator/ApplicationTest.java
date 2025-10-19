@@ -32,9 +32,18 @@ class ApplicationTest extends NsTest {
 
         // true
         assertSimpleTest(() -> {
-            model.setUserInput("//;\\\\n1");
+            model.setUserInput("//;\\n1");
             assertThat(model.hasCustomDelimiter()).isEqualTo(true);
 
+        });
+    }
+
+    @Test
+    void findCustomDelimiter(){
+        assertSimpleTest(() -> {
+            model.setUserInput("//;\\n1");
+            model.findCustomDelimiter();
+            assertThat(model.getUserInputForTest()).isEqualTo("1");
         });
     }
 

@@ -24,5 +24,17 @@ public class CalculatorModel {
         return false;
     }
 
+    public void findCustomDelimiter(){
+        while (hasCustomDelimiter()) {
+            int index = userInput.indexOf("\\n");
+            delimiterList.add(userInput.substring(2, index));
+            userInput = userInput.substring(index + 2);
+        }
+    }
+
+    String getUserInputForTest(){
+        return userInput;
+    }
+
 
 }
