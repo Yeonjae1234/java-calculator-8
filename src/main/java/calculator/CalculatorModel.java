@@ -63,4 +63,21 @@ public class CalculatorModel {
         return userInput.split(makeDelimiterString());
     }
 
+    public int addString(String[] splitString){
+        int answer = 0;
+        for(String str:splitString) {
+            if (str.isEmpty()) continue;
+            try {
+                int value = Integer.parseInt(str);
+                if(value<=0){
+                    throw new IllegalArgumentException();
+                }
+                answer+=value;
+            } catch (Exception e) {
+                throw new IllegalArgumentException();
+            }
+        }
+        return answer;
+    }
+
 }

@@ -72,6 +72,27 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void addString(){
+        assertSimpleTest(() -> {
+            assertThat(model.addString(new String[]{"1", "2", "3"})).isEqualTo(6);
+        });
+    }
+
+    @Test
+    void addString_Empty(){
+        assertSimpleTest(() -> {
+            assertThat(model.addString(new String[]{})).isEqualTo(0);
+        });
+    }
+
+    @Test
+    void addString_Failure(){
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> model.addString(new String[]{"-1,2,3"}))
+                .isInstanceOf(IllegalArgumentException.class);
+        });
+    }
 
 //    @Test
 //    void 커스텀_구분자_사용() {
