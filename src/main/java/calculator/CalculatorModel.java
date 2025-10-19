@@ -59,6 +59,8 @@ public class CalculatorModel {
         return String.valueOf(sb);
     }
 
-
+    public String[] splitUserInput(){
+        return userInput.split(makeDelimiterString());
+    }
 
 }

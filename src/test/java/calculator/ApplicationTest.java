@@ -63,6 +63,16 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void splitUserInput(){
+        assertSimpleTest(() -> {
+            model.setUserInput("//\\a\\n1,2;3\\a4");
+            model.findCustomDelimiter();
+            assertThat(model.splitUserInput()).containsExactly("1","2","3","4");
+        });
+    }
+
+
 //    @Test
 //    void 커스텀_구분자_사용() {
 //        assertSimpleTest(() -> {
