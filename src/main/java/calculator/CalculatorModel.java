@@ -36,8 +36,6 @@ public class CalculatorModel {
         }
     }
 
-
-
     public boolean isRegexPattern(String delimiter){
         char ch = 0;
         return !((delimiter.length() == 1 &&
@@ -48,5 +46,19 @@ public class CalculatorModel {
                         ((ch-'a')|('z'-ch)) < 0 &&
                         ((ch-'A')|('Z'-ch)) < 0));
     }
+
+    public String makeDelimiterString(){
+        StringBuilder sb = new StringBuilder();
+        for (String delimiter : delimiterList) {
+            if(isRegexPattern(delimiter)){
+                sb.append("\\");
+            }
+            sb.append(delimiter).append("|");
+        }
+        sb.setLength(sb.length()-1);
+        return String.valueOf(sb);
+    }
+
+
 
 }

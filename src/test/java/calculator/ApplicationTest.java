@@ -50,7 +50,16 @@ class ApplicationTest extends NsTest {
     @Test
     void isRegexPattern(){
         assertSimpleTest(() -> {
-            assertThat(model.isRegexPattern("\\n")).isEqualTo(true);
+            assertThat(model.isRegexPattern("\\a")).isEqualTo(true);
+        });
+    }
+
+    @Test
+    void makeDelimiterString(){
+        assertSimpleTest(() -> {
+            model.setUserInput("//\\a\\n1");
+            model.findCustomDelimiter();
+            assertThat(model.makeDelimiterString()).isEqualTo(",|;|\\\\a");
         });
     }
 
