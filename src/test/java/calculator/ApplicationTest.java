@@ -10,12 +10,28 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
 
     CalculatorView view = new CalculatorView();
+    CalculatorModel model = new CalculatorModel();
 
     @Test
     void getUserInput(){
         assertSimpleTest(() -> {
             run("1,2:3");
             assertThat(view.getUserInput()).isEqualTo("1,2:3");
+        });
+    }
+
+    @Test
+    void hasCustomDelimiter(){
+
+        // false
+        assertSimpleTest(() -> {
+            assertThat(model.hasCustomDelimiter("1,2:3")).isEqualTo(false);
+        });
+
+        // true
+        assertSimpleTest(() -> {
+            assertThat(model.hasCustomDelimiter("//;\\\\n1")).isEqualTo(true);
+
         });
     }
 
