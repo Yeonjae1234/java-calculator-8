@@ -11,6 +11,7 @@ class ApplicationTest extends NsTest {
 
     CalculatorView view = new CalculatorView();
     CalculatorModel model = new CalculatorModel();
+    CalculatorController controller = new CalculatorController(view, model);
 
     @Test
     void getUserInput(){
@@ -25,12 +26,14 @@ class ApplicationTest extends NsTest {
 
         // false
         assertSimpleTest(() -> {
-            assertThat(model.hasCustomDelimiter("1,2:3")).isEqualTo(false);
+            model.setUserInput("1,2:3");
+            assertThat(model.hasCustomDelimiter()).isEqualTo(false);
         });
 
         // true
         assertSimpleTest(() -> {
-            assertThat(model.hasCustomDelimiter("//;\\\\n1")).isEqualTo(true);
+            model.setUserInput("//;\\\\n1");
+            assertThat(model.hasCustomDelimiter()).isEqualTo(true);
 
         });
     }
