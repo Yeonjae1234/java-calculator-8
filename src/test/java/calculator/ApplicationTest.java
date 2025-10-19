@@ -47,6 +47,13 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void isRegexPattern(){
+        assertSimpleTest(() -> {
+            assertThat(model.isRegexPattern("\\n")).isEqualTo(true);
+        });
+    }
+
 //    @Test
 //    void 커스텀_구분자_사용() {
 //        assertSimpleTest(() -> {

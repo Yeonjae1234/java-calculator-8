@@ -17,6 +17,10 @@ public class CalculatorModel {
         this.userInput = userInput;
     }
 
+    String getUserInputForTest(){
+        return userInput;
+    }
+
     public boolean hasCustomDelimiter() {
         if (userInput.startsWith("//") && userInput.contains("\\n")) {
             return true;
@@ -32,9 +36,17 @@ public class CalculatorModel {
         }
     }
 
-    String getUserInputForTest(){
-        return userInput;
-    }
 
+
+    public boolean isRegexPattern(String delimiter){
+        char ch = 0;
+        return !((delimiter.length() == 1 &&
+                ".$|()[{^?*+\\".indexOf(ch = delimiter.charAt(0)) == -1) ||
+                (delimiter.length() == 2 &&
+                        delimiter.charAt(0) == '\\' &&
+                        (((ch = delimiter.charAt(1))-'0')|('9'-ch)) < 0 &&
+                        ((ch-'a')|('z'-ch)) < 0 &&
+                        ((ch-'A')|('Z'-ch)) < 0));
+    }
 
 }
