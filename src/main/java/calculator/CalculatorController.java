@@ -12,6 +12,10 @@ public class CalculatorController {
     public void run() {
         String userInput = view.getUserInput();
         model.setUserInput(userInput);
+        model.findCustomDelimiter();
+        String[] splitUserInput = model.splitUserInput();
+        int answer = model.addString(splitUserInput);
+        view.printResult(answer);
     }
 
 }
