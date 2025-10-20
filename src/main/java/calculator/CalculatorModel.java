@@ -10,7 +10,7 @@ public class CalculatorModel {
     public CalculatorModel() {
         this.delimiterList = new ArrayList<>();
         delimiterList.add(",");
-        delimiterList.add(";");
+        delimiterList.add(":");
     }
 
     public void setUserInput(String userInput) {

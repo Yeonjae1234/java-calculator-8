@@ -62,14 +62,14 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() -> {
             model.setUserInput("//\\a\\n1");
             model.findCustomDelimiter();
-            assertThat(model.makeDelimiterString()).isEqualTo(",|;|\\\\a");
+            assertThat(model.makeDelimiterString()).isEqualTo(",|:|\\\\a");
         });
     }
 
     @Test
     void splitUserInput(){
         assertSimpleTest(() -> {
-            model.setUserInput("//\\a\\n1,2;3\\a4");
+            model.setUserInput("//\\a\\n1,2:3\\a4");
             model.findCustomDelimiter();
             assertThat(model.splitUserInput()).containsExactly("1","2","3","4");
         });
